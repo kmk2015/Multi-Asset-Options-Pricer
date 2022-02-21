@@ -1,13 +1,14 @@
 from abc import ABC, abstractmethod
 import numpy as np
 import scipy.stats as sp
+import datetime as datetime
 import json
+
 
 
 class Instrument(ABC):
     def __init__(self):
         pass
-
 
 class Option(Instrument):
     def __init__(self, name, trade_date, expiry_date, call_or_put, strike, day_count, pv_ccy):
@@ -20,7 +21,7 @@ class Option(Instrument):
         self._pv_ccy = pv_ccy
 
     def __str__(self):
-        return str(json.dumps(self.__dict__))
+        return str(json.dumps(self.__dict__,default=str))
 
     @property
     def name(self):
@@ -36,7 +37,10 @@ class Option(Instrument):
 
     @trade_date.setter
     def trade_date(self, value):
-        self._trade_date = value
+        if isinstance(value, datetime.datetime):
+            self._trade_date = value
+        else:
+            raise Exception("trade_date must be of type datetime.datetime")
 
     @property
     def expiry_date(self):
@@ -44,7 +48,10 @@ class Option(Instrument):
 
     @expiry_date.setter
     def expiry_date(self, value):
-        self._expiry_date = value
+        if isinstance(value, datetime.datetime):
+            self._expiry_date = value
+        else:
+            raise Exception("expiry_date must be of type datetime.datetime")
 
     @property
     def call_or_put(self):
@@ -52,7 +59,6 @@ class Option(Instrument):
 
     @call_or_put.setter
     def call_or_put(self, value):
-        print(value)
         if value in ['c', 'call', 'rec', 'receiver', 'p', 'put', 'pay', 'payer']:
             self._call_or_put = value
         else:
@@ -126,5 +132,3 @@ class Option(Instrument):
             price = (sp.norm.pdf(d) - d * sp.norm.cdf(-d)) * sigma * np.sqrt(time_to_expiry)
 
         return price
-
-
