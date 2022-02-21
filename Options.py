@@ -110,11 +110,11 @@ class Option(Instrument):
 
         if call_or_put.lower() in ['call', 'c']:
 
-            price = forward * sp.norm(0, 1).cdf(d1) - strike * sp.norm.cdf(d2)
+            price = forward * sp.norm.cdf(d1) - strike * sp.norm.cdf(d2)
 
         elif call_or_put.lower() in ['put', 'p']:
 
-            price = strike * sp.norm.cdf(-d2) - forward * strike * sp.norm.cdf(-d1)
+            price = strike * sp.norm.cdf(-d2) - forward * sp.norm.cdf(-d1)
 
         return price
 
