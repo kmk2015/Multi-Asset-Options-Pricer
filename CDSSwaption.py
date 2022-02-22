@@ -27,7 +27,7 @@ class CDSSwaption(Option):
     def pv(self, *, spot, sigma, rd, cds):
         """
         :param spot: level of spot cds spread in bps/annum
-        :param sigma:
+        :param sigma: Log Normal Implied Volatility in percentage points/Year,16% Annual Volatility should be input as 16/100
         :param rd: flat interest rate for discounting, in practice, one uses the full ISDA swap curve for this
         :param cds: cds object with cds details like maturity, recovery
         :return: returns the pv in bps upfront for cds swaption
@@ -55,7 +55,7 @@ class CDSSwaption(Option):
     def delta(self, *, spot, sigma, rd, cds, bump=10):
         """
         :param spot: level of spot cds spread in bps/annum
-        :param sigma:
+        :param sigma: Log Normal Implied Volatility in percentage points/Year,16% Annual Volatility should be input as 16/100
         :param rd: flat interest rate for discounting, in practice, one uses the full ISDA swap curve for this
         :param cds: cds object with cds details like maturity, recovery
         :param bump: amount by which underlying is shifted to calculate numerical delta
@@ -70,7 +70,7 @@ class CDSSwaption(Option):
     def gamma(self, *, spot, sigma, rd, cds, bump=10):
         """
         :param spot: level of spot cds spread in bps/annum
-        :param sigma:
+        :param sigma: Log Normal Implied Volatility in percentage points/Year,16% Annual Volatility should be input as 16/100
         :param rd: flat interest rate for discounting, in practice, one uses the full ISDA swap curve for this
         :param cds: cds object with cds details like maturity, recovery
         :param bump: amount by which underlying is shifted to calculate numerical gamma
@@ -85,7 +85,7 @@ class CDSSwaption(Option):
     def vega(self, *, spot, sigma, rd, cds, bump=1):
         """
         :param spot: level of spot cds spread in bps/annum
-        :param sigma:
+        :param sigma: Log Normal Implied Volatility in percentage points/Year,16% Annual Volatility should be input as 16/100
         :param rd: flat interest rate for discounting, in practice, one uses the full ISDA swap curve for this
         :param cds: cds object with cds details like maturity, recovery
         :param bump: amount by which underlying is shifted to calculate numerical gamma
