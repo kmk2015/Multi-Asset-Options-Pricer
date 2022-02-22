@@ -11,7 +11,7 @@ In the case of CDS swaptions, the current pricing module is much faster than a c
 
 Further Work Needed:
 1. FX Options 
-  a. Implementing Calendars
+  a. Implementing Calendars - One could potentially use Quantlib to simplify this
   b. Implementing correct day counts to account for differences between trade dates, spot value dates, expiry date and expiry value dates.
   c. Returning Delta, Gamma in Notional terms
 2. Rates Swaptions
