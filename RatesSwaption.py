@@ -44,7 +44,7 @@ class RatesSwaption(Option):
 
         return (pv_up - pv_down)/bump/2.0
 
-    def gamma(self, *, forward, sigma, annuity, bump=10):
+    def gamma(self, *, forward, sigma, annuity, bump=1):
         """
         :param forward: Forward is in basis points
         :param sigma: Sigma is Annual Black Normal Volatility in Basis Points/Yr
@@ -74,22 +74,22 @@ class RatesSwaption(Option):
 
 
 if __name__== '__main__':
-    payr_swaption = RatesSwaption(name='RatesPayer', trade_date=datetime.datetime(2017,1,31),
-                                  expiry_date=datetime.datetime(2018,1,31),pay_or_rec='Payer',
-                                  strike=180,day_count=365,pv_ccy='USD')
+    payr_swaption = RatesSwaption(name='RatesPayer', trade_date=datetime.datetime(2019,8,5),
+                                  expiry_date=datetime.datetime(2019,11,5),pay_or_rec='Payer',
+                                  strike=160,day_count=365,pv_ccy='USD')
     print(payr_swaption)
 
-    print('PV for 100mm notional of ATM payer: ',payr_swaption.pv(forward=180, sigma=100,annuity=10)*100e6/1e4)
-    print('dv01 for 100mm notional of ATM payer: ', payr_swaption.delta(forward=180, sigma=100,annuity=10)*100e6/1e4)
-    print('gamma for 100mm notional of ATM payer: ', payr_swaption.gamma(forward=180, sigma=100,annuity=10)*100e6/1e4)
-    print('vega for 100mm notional of ATM payer: ', payr_swaption.vega(forward=180, sigma=100,annuity=10)*100e6/1e4)
+    print('PV for 100mm notional of ATM payer: ',payr_swaption.pv(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
+    print('dv01 for 100mm notional of ATM payer: ', payr_swaption.delta(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
+    print('gamma for 100mm notional of ATM payer: ', payr_swaption.gamma(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
+    print('vega for 100mm notional of ATM payer: ', payr_swaption.vega(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
 
-    recr_swaption = RatesSwaption(name='RatesPayer', trade_date=datetime.datetime(2017, 1, 31),
-                                  expiry_date=datetime.datetime(2018, 1, 31), pay_or_rec='rec',
-                                  strike=180, day_count=365, pv_ccy='USD')
+    recr_swaption = RatesSwaption(name='RatesPayer', trade_date=datetime.datetime(2019,8,5),
+                                  expiry_date=datetime.datetime(2019,11,5), pay_or_rec='rec',
+                                  strike=160, day_count=365, pv_ccy='USD')
     print(recr_swaption)
 
-    print('PV for 100mm notional of ATM receiver: ',recr_swaption.pv(forward=180, sigma=100,annuity=10)*100e6/1e4)
-    print('dv01 for 100mm notional of ATM receiver: ', recr_swaption.delta(forward=180, sigma=100,annuity=10)*100e6/1e4)
-    print('gamma for 100mm notional of ATM receiver: ', recr_swaption.gamma(forward=180, sigma=100,annuity=10)*100e6/1e4)
-    print('vega for 100mm notional of ATM receiver: ', recr_swaption.vega(forward=180, sigma=100,annuity=10)*100e6/1e4)
+    print('PV for 100mm notional of ATM receiver: ',recr_swaption.pv(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
+    print('dv01 for 100mm notional of ATM receiver: ', recr_swaption.delta(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
+    print('gamma for 100mm notional of ATM receiver: ', recr_swaption.gamma(forward=160, sigma=78,annuity=9.2)*100e6/1e4)
+    print('vega for 100mm notional of ATM receiver: ', recr_swaption.vega(forward=160, sigma=78,annuity=9.2)*100e6/1e4)

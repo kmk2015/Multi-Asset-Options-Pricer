@@ -1,14 +1,10 @@
 from abc import ABC, abstractmethod
+from Instrument import Instrument
 import numpy as np
 import scipy.stats as sp
 import datetime as datetime
 import json
 
-
-
-class Instrument(ABC):
-    def __init__(self):
-        pass
 
 class Option(Instrument):
     def __init__(self, name, trade_date, expiry_date, call_or_put, strike, day_count, pv_ccy):
