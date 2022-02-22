@@ -1,5 +1,5 @@
 # Multi-Asset-Options-Pricer
-This package contains class files to price vanilla options/swaptions in multiple asset classes:
+This package contains class files to price european vanilla options/swaptions in multiple asset classes:
 1. Equity Indices
 2. Foreign Exchange
 3. Interest Rates Swaptions
